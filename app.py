@@ -1,12 +1,14 @@
 import re
 from flask import Flask
 from flask import jsonify,request
+from flask_cors import CORS
 
 def create_app():
     app = Flask(__name__)
     return app
 
 app = create_app()
+CORS(app)
 
 db={}
 @app.route('/users', methods=['POST'])
@@ -87,4 +89,4 @@ def show_events():
     return jsonify(events)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=5000,debug=True)
